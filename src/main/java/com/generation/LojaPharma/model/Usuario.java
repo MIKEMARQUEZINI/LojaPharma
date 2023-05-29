@@ -10,30 +10,30 @@ import jakarta.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table (name = "tb_usuarios")
+@Table(name = "tb_usuarios")
 public class Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // indica que este atributo será uma chave primaria na minha tabela
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//indica que terá um auto-increment
     private Long id;
 
-    @NotNull(message = "O Atributo NOME é Obrigatório")
+    @NotNull(message = "Este atributo NOME é obrigatório")
     private String nome;
 
-    @NotNull(message = "O Atributo Usuário é Obrigatório!")
-    @Email(message = "O Atributo Usuário deve ser um email válido!")
+    @NotNull(message = "Este atributo USUARIO é obrigatório")
+    @Email(message = "O atributo usuario vai receber um EMAIL valído")
     private String usuario;
 
-    @NotBlank(message = "O Atributo SENHA é Obrigatória")
-    @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
+    @NotBlank(message = "Este atributo SENHA é obrigatório")
+    @Size(min = 8, message = "A senha deve ter no minimo 8 caracteres" )
     private String senha;
 
-    @Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
+    @Size(max=5000, message = "O Link da foto não pode ser maior que 5000 caracteres")
     private String foto;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("usuario")
-    private List<Produto> produtos;
+    private List<Produto> produto;
 
     public Long getId() {
         return id;
@@ -74,4 +74,13 @@ public class Usuario {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    public List<Produto> getProduto() {
+        return produto;
+    }
+
+    public void setProduto(List<Produto> produto) {
+        this.produto = produto;
+    }
 }
+
