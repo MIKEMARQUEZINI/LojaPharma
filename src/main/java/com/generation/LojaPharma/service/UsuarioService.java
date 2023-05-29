@@ -3,6 +3,7 @@ package com.generation.LojaPharma.service;
 import com.generation.LojaPharma.model.Usuario;
 import com.generation.LojaPharma.model.UsuarioLogin;
 import com.generation.LojaPharma.repository.UsuarioRepository;
+import com.generation.LojaPharma.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;

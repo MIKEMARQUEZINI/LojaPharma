@@ -19,14 +19,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String userName)
-            throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+
         Optional<Usuario> usuario = usuarioRepository.findByUsuario(userName);
 
-        if(usuario.isPresent())
+        if (usuario.isPresent())
             return new UserDetailsImpl(usuario.get());
         else
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-    }
 
+    }
 }
